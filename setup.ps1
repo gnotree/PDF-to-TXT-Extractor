@@ -1,6 +1,5 @@
-# setup.ps1 — installs Python, Git, Tesseract, creates venv, installs requirements
+# Installs Python 3.11, Git, and Tesseract using winget
 Write-Host "`nInstalling system dependencies with winget..." -ForegroundColor Cyan
-
 winget install --id Python.Python.3.11 -e --source winget
 winget install --id Git.Git -e --source winget
 winget install --id Tesseract.Tesseract -e --source winget
@@ -15,4 +14,4 @@ Write-Host "`nInstalling Python requirements..." -ForegroundColor Cyan
 pip install --upgrade pip
 pip install -r requirements.txt
 
-Write-Host "`nSetup complete. Run 'launch.ps1' to start the extractor." -ForegroundColor Green
+Write-Host "`nSetup complete. Run 'launch.ps1' to extract from PDF." -ForegroundColor Green
