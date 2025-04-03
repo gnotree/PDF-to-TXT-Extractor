@@ -1,20 +1,19 @@
-# launch.ps1 — CLI interface to run extract_to_txt.py with prompts
+# launch.ps1 — CLI interface for PDF-to-TXT conversion
 .\venv\Scripts\activate
 
 Write-Host "`nPDF-to-TXT Extractor" -ForegroundColor Cyan
 Write-Host "======================" -ForegroundColor Cyan
 
-# Prompt for PDF file
-$pdfPath = Read-Host "Enter the FULL path to your PDF file (e.g. C:\Users\You\Documents\myfile.pdf)"
+# Ask for PDF
+$pdfPath = Read-Host "Enter the FULL path to your PDF file"
 
-# Verify file exists
 if (-Not (Test-Path $pdfPath)) {
-    Write-Host "Error: File not found at $pdfPath" -ForegroundColor Red
+    Write-Host "❌ File not found at: $pdfPath" -ForegroundColor Red
     exit
 }
 
-# Prompt for output location
-$outputPath = Read-Host "Enter output TXT path or press Enter to save in the same folder"
+# Ask for output destination
+$outputPath = Read-Host "Enter output TXT path or press Enter to save in same folder"
 
 if ($outputPath -eq "") {
     $fileName = [System.IO.Path]::GetFileNameWithoutExtension($pdfPath)
@@ -23,5 +22,5 @@ if ($outputPath -eq "") {
     Write-Host "Output will be saved to: $outputPath" -ForegroundColor Yellow
 }
 
-# Run the Python script
+# Run extraction
 python extract_to_txt.py --pdf "$pdfPath" --output "$outputPath"
