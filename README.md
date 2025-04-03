@@ -1,55 +1,40 @@
 # PDF-to-TXT Extractor
 
-This tool extracts plain text from very large PDFs (e.g. a 5000-page Bible or medical records), with support for both native text extraction and OCR for scanned image pages. It's optimized for fresh Windows systems and assumes no prior installations.
+A command-line tool to extract clean, readable text from massive PDFs (like the 5000-page Bible or medical documents). Supports both native PDF extraction and OCR using Tesseract for scanned/image-based PDFs.
+
+---
 
 ## Why This Tool?
 
-PDFs, especially scanned books and medical files, are difficult to convert into clean text. This tool solves that by:
-- Extracting text from PDFs directly (when possible)
-- Automatically running OCR (Tesseract) for image-based pages
-- Outputting a clean `.txt` file ready for reading or training an LLM
+PDFs—especially scanned books or health records—are often difficult to convert into useful text formats. This tool solves that by:
+- Extracting embedded text where possible using PyMuPDF
+- Falling back to OCR via Tesseract for scanned images
+- Dumping everything into a plain `.txt` file
 
 ---
 
-## 📦 System Requirements
+## System Requirements
 
 - Windows 10, 11, or Server 2022/2025
-- Internet access to install packages
-- Admin rights to use `winget` (built into Windows)
+- Winget (built into Windows) for package installation
+- Admin rights for setup
+- Python 3.11, Git, and Tesseract (installed automatically)
 
 ---
 
-## 🔧 Why These Tools?
+## Why These Tools?
 
-### ✅ Winget
-- Native to modern Windows
-- No extra scripts or installers like Chocolatey
-- Used here to install Python, Git, and Tesseract OCR engine
-
-### ✅ Python 3.11
-- Faster and more efficient than 3.10
-- Widely supported by modern machine learning and OCR libraries
-
-### ✅ Git
-- Makes cloning the repository simple and clean
-
-### ✅ Tesseract
-- Industry-standard OCR engine
-- Converts image-based pages into machine-readable text
+- **Winget**: Native to Windows. Eliminates the need for external package managers like Chocolatey.
+- **Python 3.11**: Modern, faster, and fully compatible with the tool's dependencies.
+- **Git**: Makes downloading and maintaining this project dead simple.
+- **Tesseract**: OCR engine used to extract text from image-based PDF pages.
 
 ---
 
-## ⚙️ Step-by-Step Installation
+## Step-by-Step Installation
 
-### Step 1 – Download or Clone the Repository
+### 1. Clone the Repository or Download ZIP
 
 ```powershell
 git clone https://github.com/yourusername/pdf-to-txt-extractor.git
 cd pdf-to-txt-extractor
-
-
-Or download the ZIP and extract manually.
-
-#### Step 2 – Run the Setup Script
-Set-ExecutionPolicy RemoteSigned -Scope Process -Force
-.\setup.ps1
